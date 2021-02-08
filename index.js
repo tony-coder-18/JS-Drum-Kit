@@ -3,14 +3,15 @@ let buttons = document.querySelectorAll("button");
 
 for (let i = 0; i<buttons.length; i++) {
 	
-	
-	
     buttons[i].addEventListener("click", function(){
 		
 		let key = this.innerHTML;
 		actions(key);
 		
+		buttonPressed(key);
+
 		});
+
 }
 
 
@@ -19,8 +20,9 @@ document.addEventListener("keydown", function(){
 	
 	let key = event.key;
 	actions(key);
-	
-	});
+
+	buttonPressed(key);
+});
 
 
 
@@ -62,3 +64,15 @@ function actions(key) {
 	
 }
 
+//Animation Function
+
+function buttonPressed(btn) {
+	let buttonName = document.querySelector("."+btn);
+
+	buttonName.classList.add('pressed');
+
+	setTimeout(function(){
+		buttonName.classList.remove('pressed');
+	}, 200)
+
+}
